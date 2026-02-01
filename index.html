@@ -5,33 +5,20 @@
   <title>Valentine 💖</title>
   <style>
     body {
-      background: #fce4ec;
+      background: #ff4d6d;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      font-family: Arial, sans-serif;
+      font-family: Arial;
+      color: white;
     }
     .card {
-      background: white;
-      padding: 40px;
+      background: #ff758f;
+      padding: 30px;
       border-radius: 20px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-    h1 {
-      margin-bottom: 30px;
-    }
-    button {
-      font-size: 18px;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-    }
-    #yes {
-      background: #ff4081;
-      color: white;
+      position: relative;
     }
     #no {
       position: absolute;
@@ -39,12 +26,18 @@
     }
   </style>
 </head>
+
 <body>
   <div class="card">
-    <h1>Есүлин 💖<br>Will you be my Valentine?</h1>
-    <button id="yes" onclick="alert('💘 YAY!!! 💘')">Yes</button>
+    <h1>💖 Will you be my Valentine?</h1>
+    <button id="yes" onclick="playLove()">Yes 💘</button>
     <button id="no">No</button>
   </div>
+
+  <!-- AUDIO MUST BE INSIDE BODY -->
+  <audio id="loveSound">
+    <source src="love.mp3.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
     const noBtn = document.getElementById("no");
@@ -54,17 +47,6 @@
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
     });
-  </script>
-</body>
-</html><button onclick="playLove()">💗 Дар</button>
 
-<audio id="loveSound">
-  <source src="love.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-function playLove() {
-  document.getElementById("loveSound").play();
-}
-</script>
-
+    function playLove() {
+      document.getElementById("loveSou
