@@ -10,8 +10,9 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       color: white;
+      margin: 0;
     }
     .card {
       background: #ff758f;
@@ -20,9 +21,22 @@
       text-align: center;
       position: relative;
     }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    #yes {
+      background: #ff4081;
+      color: white;
+    }
     #no {
       position: absolute;
       background: #ccc;
+      color: black;
     }
   </style>
 </head>
@@ -34,12 +48,13 @@
     <button id="no">No</button>
   </div>
 
-  <!-- AUDIO MUST BE INSIDE BODY -->
-  <audio id="loveSound">
+  <!-- AUDIO -->
+  <audio id="loveSound" preload="auto">
     <source src="love.mp3.mp3" type="audio/mpeg">
   </audio>
 
   <script>
+    // No button escapes 😄
     const noBtn = document.getElementById("no");
     noBtn.addEventListener("mouseover", () => {
       const x = Math.random() * (window.innerWidth - 100);
@@ -48,5 +63,13 @@
       noBtn.style.top = y + "px";
     });
 
+    // Play music
     function playLove() {
-      document.getElementById("loveSou
+      const audio = document.getElementById("loveSound");
+      audio.currentTime = 0;
+      audio.play();
+      alert("💖 Yay!!! 💖");
+    }
+  </script>
+</body>
+</html>
