@@ -22,22 +22,16 @@ body {
   border-radius: 25px;
   text-align: center;
   color: white;
-  width: 340px;
+  width: 360px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 h1 {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 p {
   font-size: 18px;
-}
-
-.buttons {
-  margin-top: 25px;
-  position: relative;
-  height: 80px;
 }
 
 button {
@@ -51,12 +45,13 @@ button {
 #yes {
   background: #ff2f92;
   color: white;
+  margin-right: 20px;
 }
 
 #no {
   background: white;
   color: #ff2f92;
-  position: absolute;
+  position: fixed;
 }
 </style>
 </head>
@@ -64,31 +59,48 @@ button {
 <body>
 
 <div class="card">
-  <h1>💖 Миний хайр <br> <span>Есүлин</span> 🎀</h1>
+  <h1>🎀 Есүлин 💖</h1>
   <p>Will you be my Valentine? 💘</p>
 
-  <div class="buttons">
-    <button id="yes">YES</button>
-    <button id="no">NO</button>
-  </div>
-
-  <audio id="music" src="love.mp3"></audio>
+  <button id="yes">YES</button>
 </div>
+
+<button id="no">NO</button>
+
+<audio id="music" src="love.mp3"></audio>
 
 <script>
 const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
 const music = document.getElementById("music");
 
-/* NO — хурдан зугтана */
-noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * 240 - 120;
-  const y = Math.random() * 70 - 35;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
-});
+/* NO — SCREEN ДАЯАР АЙМАР ХУРДАН */
+function moveNo() {
+  const maxX = window.innerWidth - noBtn.offsetWidth;
+  const maxY = window.innerHeight - noBtn.offsetHeight;
 
-/* YES — дуу явна */
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+noBtn.addEventListener("mouseenter", moveNo);
+noBtn.addEventListener("mousedown", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+
+/* YES — ДУУ */
 yesBtn.addEventListener("click", () => {
   music.play();
-  aler
+  alert("💖 YES 💖");
+});
 
+/* эхлэхэд шууд зугтана */
+moveNo();
+</script>
+
+</body>
+</html>
+
+  
