@@ -1,58 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Valentine 💖</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #fff;
-      font-family: sans-serif;
-    }
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
 
-    .box {
-      text-align: center;
-    }
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffd6e8;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
 
-    button {
-      font-size: 20px;
-      padding: 12px 24px;
-      margin: 10px;
-      cursor: pointer;
-    }
+.card {
+  background: #ff7fbf;
+  padding: 40px;
+  border-radius: 25px;
+  text-align: center;
+  color: white;
+  width: 340px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
 
-    .heart {
-      display: none;
-      margin-top: 20px;
-      font-size: 40px;
-    }
-  </style>
+h1 {
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 18px;
+}
+
+.buttons {
+  margin-top: 25px;
+  position: relative;
+  height: 80px;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#yes {
+  background: #ff2f92;
+  color: white;
+}
+
+#no {
+  background: white;
+  color: #ff2f92;
+  position: absolute;
+}
+</style>
 </head>
+
 <body>
 
-<div class="box">
-  <h2>Do you love me? 💕</h2>
+<div class="card">
+  <h1>💖 Миний хайр <br> <span>Есүлин</span> 🎀</h1>
+  <p>Will you be my Valentine? 💘</p>
 
-  <button onclick="playYes()">YES</button>
-  <button>NO</button>
-
-  <div class="heart">💖💗💖</div>
+  <div class="buttons">
+    <button id="yes">YES</button>
+    <button id="no">NO</button>
+  </div>
 
   <audio id="music" src="love.mp3"></audio>
 </div>
 
 <script>
-function playYes() {
-  const audio = document.getElementById("music");
-  audio.play();
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const music = document.getElementById("music");
 
-  document.querySelector(".heart").style.display = "block";
-}
-</script>
+/* NO — хурдан зугтана */
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * 240 - 120;
+  const y = Math.random() * 70 - 35;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
 
-</body>
-</html>
+/* YES — дуу явна */
+yesBtn.addEventListener("click", () => {
+  music.play();
+  aler
+
