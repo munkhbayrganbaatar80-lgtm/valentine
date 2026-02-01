@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Valentine 💖</title>
   <style>
     body {
@@ -10,96 +10,49 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #ff4d6d;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
+      background: #fff;
+      font-family: sans-serif;
     }
 
-    .card {
-      background: #ff758f;
-      padding: 30px 40px;
-      border-radius: 20px;
+    .box {
       text-align: center;
-      color: white;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      position: relative;
-    }
-
-    h1 {
-      margin-bottom: 20px;
     }
 
     button {
-      padding: 12px 25px;
-      font-size: 16px;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
+      font-size: 20px;
+      padding: 12px 24px;
       margin: 10px;
+      cursor: pointer;
     }
 
-    #yes {
-      background: #ff4081;
-      color: white;
-    }
-
-    #no {
-      background: #ddd;
-      color: black;
-      position: fixed;
-    }
-
-    .decor {
-      margin-bottom: 10px;
-      font-size: 28px;
+    .heart {
+      display: none;
+      margin-top: 20px;
+      font-size: 40px;
     }
   </style>
 </head>
-
 <body>
 
-  <div class="card">
-    <div class="decor">🎀💖</div>
-    <h1>Will you be my Valentine?</h1>
-    <button id="yes" onclick="playLove()">Yes 💘</button>
-  </div>
+<div class="box">
+  <h2>Do you love me? 💕</h2>
 
-  <button id="no">No 🙅‍♂️</button>
+  <button onclick="playYes()">YES</button>
+  <button>NO</button>
 
-  <!-- AUDIO -->
-  <audio id="loveSound">
-    <source src="love.mp3.mp3" type="audio/mpeg">
-  </audio>
+  <div class="heart">💖💗💖</div>
 
-  <script>
-    /* YES = PLAY MUSIC */
-    function playLove() {
-      document.getElementById("loveSound").play();
-      alert("YAY!!! 💖💖💖");
-    }
+  <audio id="music" src="love.mp3"></audio>
+</div>
 
-    /* NO = SCREEN DAAAR ZUGTANA */
-    const noBtn = document.getElementById("no");
+<script>
+function playYes() {
+  const audio = document.getElementById("music");
+  audio.play();
 
-    function moveNo() {
-      const btnRect = noBtn.getBoundingClientRect();
-      const maxX = window.innerWidth - btnRect.width;
-      const maxY = window.innerHeight - btnRect.height;
-
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
-
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    }
-
-    noBtn.addEventListener("mouseenter", moveNo);
-    noBtn.addEventListener("mousedown", moveNo);
-    noBtn.addEventListener("touchstart", moveNo);
-
-    /* эхлэхэд нэг зугтаая */
-    moveNo();
-  </script>
+  document.querySelector(".heart").style.display = "block";
+}
+</script>
 
 </body>
 </html>
