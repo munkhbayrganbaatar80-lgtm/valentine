@@ -1,75 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Valentine 💖</title>
-  <style>
-    body {
-      background: #ff4d6d;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-      color: white;
-      margin: 0;
-    }
-    .card {
-      background: #ff758f;
-      padding: 30px;
-      border-radius: 20px;
-      text-align: center;
-      position: relative;
-    }
-    button {
-      padding: 10px 20px;
-      margin: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-    #yes {
-      background: #ff4081;
-      color: white;
-    }
-    #no {
-      position: absolute;
-      background: #ccc;
-      color: black;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
+
+<style>
+  body {
+    background: #ff4d6d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+  }
+
+  .card {
+    background: #ff758f;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    width: 300px;
+  }
+
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  #yes {
+    background: #ff4081;
+    color: white;
+  }
+
+  #no {
+    background: #ccc;
+    position: absolute;
+  }
+</style>
 </head>
 
 <body>
-  <div class="card">
-    <h1>💖 Will you be my Valentine?</h1>
-    <button id="yes" onclick="playLove()">Yes 💘</button>
-    <button id="no">No</button>
-  </div>
 
-  <!-- AUDIO -->
-  <audio id="loveSound" preload="auto">
-    <source src="love.mp3.mp3" type="audio/mpeg">
-  </audio>
+<div class="card">
+  <h1>💖 Will you be my Valentine?</h1>
+  <button id="yes" onclick="playLove()">Yes 💘</button>
+  <button id="no">No 😅</button>
+</div>
 
-  <script>
-    // No button escapes 😄
-    const noBtn = document.getElementById("no");
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 50);
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    });
+<!-- AUDIO -->
+<audio id="loveSound">
+  <source src="love.mp3.mp3" type="audio/mpeg">
+</audio>
 
-    // Play music
-    function playLove() {
-      const audio = document.getElementById("loveSound");
-      audio.currentTime = 0;
-      audio.play();
-      alert("💖 Yay!!! 💖");
-    }
-  </script>
+<script>
+  const noBtn = document.getElementById("no");
+
+  noBtn.addEventListener("mouseover", () => {
+    // ЖИЖИГ ЗАЙТАЙ RANDOM ХӨДӨЛГӨӨ
+    const x = Math.random() * 120 - 60; // -60px → +60px
+    const y = Math.random() * 80 - 40;  // -40px → +40px
+
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  });
+
+  function playLove() {
+    document.getElementById("loveSound").play();
+    alert("💖 YAY!!! 💖");
+  }
+</script>
+
 </body>
 </html>
