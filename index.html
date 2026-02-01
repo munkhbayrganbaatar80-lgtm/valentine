@@ -1,106 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Valentine 💖</title>
+  <meta charset="UTF-8">
+  <title>Valentine 💖</title>
 
-<style>
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #ffd6e8;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
-}
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: pink;
+      font-family: Arial, sans-serif;
+    }
 
-.card {
-  background: #ff7fbf;
-  padding: 40px;
-  border-radius: 25px;
-  text-align: center;
-  color: white;
-  width: 360px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
+    .card {
+      background: white;
+      padding: 20px 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
 
-h1 {
-  margin-bottom: 15px;
-}
+    h1 {
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
 
-p {
-  font-size: 18px;
-}
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      margin: 5px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
 
-button {
-  padding: 12px 25px;
-  font-size: 16px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-}
-
-#yes {
-  background: #ff2f92;
-  color: white;
-  margin-right: 20px;
-}
-
-#no {
-  background: white;
-  color: #ff2f92;
-  position: fixed;
-}
-</style>
+    #no {
+      position: absolute;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="card">
-  <h1>🎀 Есүлин 💖</h1>
-  <p>Will you be my Valentine? 💘</p>
+  <div class="card">
+    <h1>Есүлин 💖<br>Will you be my Valentine?</h1>
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
+  </div>
 
-  <button id="yes">YES</button>
-</div>
+  <audio id="loveSound">
+    <source src="love.mp3" type="audio/mpeg">
+  </audio>
 
-<button id="no">NO</button>
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const sound = document.getElementById("loveSound");
 
-<audio id="music" src="love.mp3"></audio>
+    // NO зугтаана
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
 
-<script>
-const noBtn = document.getElementById("no");
-const yesBtn = document.getElementById("yes");
-const music = document.getElementById("music");
-
-/* NO — SCREEN ДАЯАР АЙМАР ХУРДАН */
-function moveNo() {
-  const maxX = window.innerWidth - noBtn.offsetWidth;
-  const maxY = window.innerHeight - noBtn.offsetHeight;
-
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
-
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-}
-
-noBtn.addEventListener("mouseenter", moveNo);
-noBtn.addEventListener("mousedown", moveNo);
-noBtn.addEventListener("touchstart", moveNo);
-
-/* YES — ДУУ */
-yesBtn.addEventListener("click", () => {
-  music.play();
-  alert("💖 YES 💖");
-});
-
-/* эхлэхэд шууд зугтана */
-moveNo();
-</script>
+    // YES → дуу + мессеж
+    yesBtn.addEventListener("click", () => {
+      sound.currentTime = 0;
+      sound.play();
+      alert("💖 YAY!!! 💖");
+    });
+  </script>
 
 </body>
 </html>
-
-  
