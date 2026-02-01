@@ -22,12 +22,17 @@
     border-radius: 20px;
     text-align: center;
     position: relative;
-    width: 300px;
+    width: 320px;
+    height: 200px;
+  }
+
+  h1 {
+    font-size: 22px;
+    margin-bottom: 30px;
   }
 
   button {
     padding: 10px 20px;
-    margin: 10px;
     font-size: 16px;
     border: none;
     border-radius: 10px;
@@ -37,21 +42,25 @@
   #yes {
     background: #ff4081;
     color: white;
+    margin-right: 10px;
   }
 
   #no {
-    background: #ccc;
+    background: #ddd;
     position: absolute;
+    left: 180px;
+    top: 120px;
   }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-  <h1>💖 Will you be my Valentine?</h1>
-  <button id="yes" onclick="playLove()">Yes 💘</button>
-  <button id="no">No 😅</button>
+<div class="card" id="card">
+  <h1>💖🎀 Will you be my Valentine?</h1>
+
+  <button id="yes" onclick="playLove()">Yes 💕</button>
+  <button id="no">No</button>
 </div>
 
 <!-- AUDIO -->
@@ -61,18 +70,23 @@
 
 <script>
   const noBtn = document.getElementById("no");
+  const card = document.getElementById("card");
 
   noBtn.addEventListener("mouseover", () => {
-    // ЖИЖИГ ЗАЙТАЙ RANDOM ХӨДӨЛГӨӨ
-    const x = Math.random() * 120 - 60; // -60px → +60px
-    const y = Math.random() * 80 - 40;  // -40px → +40px
+    const cardRect = card.getBoundingClientRect();
 
-    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    const maxX = cardRect.width - noBtn.offsetWidth - 10;
+    const maxY = cardRect.height - noBtn.offsetHeight - 10;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
   });
 
   function playLove() {
     document.getElementById("loveSound").play();
-    alert("💖 YAY!!! 💖");
   }
 </script>
 
